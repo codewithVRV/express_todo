@@ -40,12 +40,10 @@ async function getTodos (req, res) {
         console.log("create product controller error:", error)
     }
 }
-function getTodo (req, res) {
+async function getTodo (req, res) {
     try{
         // db processing
-        console.log(req.params.id)
-        const response = todoService.getTodo(req.params.id)
-        console.log("response of single todo from controller", response)
+        const response = await todoService.getTodo(req.params.id)
 
         return res.status(StatusCodes.OK).json({
             success: true,

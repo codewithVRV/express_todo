@@ -14,8 +14,9 @@ class TodoService {
         return response;
     }
     
-    getTodo (id) {
-        return products.filter((todo) => todo.id === id)[0]
+    async getTodo (id) {
+        const response = await this.repository.getTodo(id);
+        return response;
     }
 }
 
