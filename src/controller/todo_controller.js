@@ -1,5 +1,4 @@
 const { StatusCodes } = require("http-status-codes")
-// const todoService = require("../service/todo_service")
 
 const TodoService = require("../service/todo_service")
 const TodoRepository = require("../repository/todo_repository")
@@ -25,10 +24,10 @@ async function createTodo (req, res) {
     }
 }
 
-function getTodos (req, res) {
+async function getTodos (req, res) {
     try{
         // db processing
-        const response = todoService.getTodos()
+        const response = await todoService.getTodos()
 
         return res.status(StatusCodes.OK).json({
             success: true,

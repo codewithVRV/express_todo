@@ -8,8 +8,10 @@ class TodoService {
         return response;
     }
     
-    getTodos () {
-        return products;
+    async getTodos () {
+        // return products;
+        const response = await this.repository.getTodos()
+        return response;
     }
     
     getTodo (id) {
