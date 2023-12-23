@@ -56,9 +56,26 @@ async function getTodo (req, res) {
         console.log("create product controller error:", error)
     }
 }
+async function destroyTodo (req, res) {
+    try{
+        // db processing
+        const response = await todoService.destroyTodo(req.params.id)
+
+        return res.status(StatusCodes.OK).json({
+            success: true,
+            error: {},
+            message: "successfully fetch  todo by given id",
+            data : response,
+        })
+    }
+    catch (error) {
+        console.log("create product controller error:", error)
+    }
+}
 
 module.exports = {
     createTodo,
     getTodos,
     getTodo,
+    destroyTodo,
 }

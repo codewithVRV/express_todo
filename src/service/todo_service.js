@@ -18,6 +18,10 @@ class TodoService {
         const response = await this.repository.getTodo(id);
         return response;
     }
+    async destroyTodo (id) {
+        const response = await this.repository.destroyTodo(id);
+        return response;
+    }
 }
 
 module.exports = TodoService;

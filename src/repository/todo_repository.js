@@ -31,6 +31,19 @@ class TodoRepository {
             console.log("Error from todoRepository createTodo", error)
         }
     }
+    async destroyTodo (todoId) {
+        try{
+            const response = await Todo.destroy({
+                where:{
+                    id: todoId,
+                }
+            })
+            return response;
+        }
+        catch (error) {
+            console.log("Error from todoRepository destroyTodo", error)
+        }
+    }
 }
 
 
