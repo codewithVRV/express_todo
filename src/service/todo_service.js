@@ -1,24 +1,20 @@
-const products = [];
-function createTodo (todo) {
-    const newTodo = {
-        id: products.length,
-        ...todo,
+
+class TodoService {
+    constructor(repository){
+        this.repository = repository;
     }
-    products.push(newTodo);
-    return newTodo;
-}
-
-function getTodos () {
-    return products;
-}
-
-function getTodo (id) {
-    return products.filter((todo) => todo.id === id)[0]
-}
-
-module.exports = {
-    createTodo,
-    getTodos,
-    getTodo,
+    async createTodo (todo) {
+        const response = await this.repository.createTodo(todo.title)
+        return response;
+    }
     
+    getTodos () {
+        return products;
+    }
+    
+    getTodo (id) {
+        return products.filter((todo) => todo.id === id)[0]
+    }
 }
+
+module.exports = TodoService;
