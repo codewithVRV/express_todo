@@ -1,9 +1,10 @@
+const { StatusCodes, ReasonPhrases } = require("http-status-codes")
 const BadRequest = require("../error/bad_request")
 const errorResponse = require("../utils/error_response")
 
 function createTodoValidator (request, response, next) {
     if(!request.body.title) {
-        return response.status(404).json(errorResponse("Title is not present in the incoming request", new BadRequest("Title")))
+        return response.status(StatusCodes.BAD_REQUEST).json(errorResponse(ReasonPhrases.BAD_REQUEST, new BadRequest("Title")))
     }
     // if everhting goes successfull then call next
     next()

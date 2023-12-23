@@ -1,14 +1,16 @@
+const { StatusCodes } = require("http-status-codes")
+
 function createTodo (request, response) {
     try{
         // db processing
 
-        return response.json({
+        return response.status(StatusCodes.CREATED).json({
             success: true,
             error: {},
             message: "successfully created new todo",
             data : {
                 id: Math.random() * (20),
-                title: ""
+                title: request.body.title,
             }
         })
     }
