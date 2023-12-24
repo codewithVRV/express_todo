@@ -1,1 +1,5 @@
-PORT= 3000;
+PORT=3002
+DB_URL="Your host name"
+DB_NAME="Your db name"
+DB_PASS="Your db password"
+DB_USER="Your user name"
