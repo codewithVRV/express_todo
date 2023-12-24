@@ -1,7 +1,8 @@
-const { StatusCodes } = require("http-status-codes")
+const { StatusCodes, ReasonPhrases } = require("http-status-codes")
 
 const TodoService = require("../service/todo_service")
 const TodoRepository = require("../repository/todo_repository")
+const errorResponse = require("../utils/error_response")
 
 const todoService = new TodoService(new TodoRepository())
 
@@ -20,6 +21,7 @@ async function createTodo (req, res) {
     }
     catch (error) {
         console.log("create Todo controller error:", error)
+        return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json(errorResponse(ReasonPhrases.INTERNAL_SERVER_ERROR, error))
     }
 }
 
@@ -37,6 +39,8 @@ async function getTodos (req, res) {
     }
     catch (error) {
         console.log("getTodos  controller error:", error)
+        return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json(errorResponse(ReasonPhrases.INTERNAL_SERVER_ERROR, error))
+
     }
 }
 async function getTodo (req, res) {
@@ -53,6 +57,8 @@ async function getTodo (req, res) {
     }
     catch (error) {
         console.log("getTodo  controller error:", error)
+        return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json(errorResponse(ReasonPhrases.INTERNAL_SERVER_ERROR, error))
+
     }
 }
 async function destroyTodo (req, res) {
@@ -69,6 +75,8 @@ async function destroyTodo (req, res) {
     }
     catch (error) {
         console.log("delete todo controller error:", error)
+        return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json(errorResponse(ReasonPhrases.INTERNAL_SERVER_ERROR, error))
+
     }
 }
 
