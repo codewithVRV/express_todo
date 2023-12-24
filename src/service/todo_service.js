@@ -50,10 +50,34 @@ class TodoService {
     async destroyTodo (id) {
         try{
             const response = await this.repository.destroyTodo(id);
+            if(!response){
+                throw new NotFoundError("Todo", "id", id)
+            }
             return response;
         }
         catch (error) {
+            if(error.name === "NotFoundError"){
+                throw error;
+            }
             console.log("destroryTodo error from todo service layer", error);
+            throw new InternalServerError()
+        }
+
+    }
+
+    async updateTodo (id, newTodo) {
+        try{
+            const response = await this.repository.updateTodo(id, newTodo);
+            if(!response){
+                throw new NotFoundError("Todo", "id", id)
+            }
+            return response;
+        }
+        catch (error) {
+            if(error.name === "NotFoundError"){
+                throw error;
+            }
+            console.log("updateTodo error from todo service layer", error);
             throw new InternalServerError()
         }
 

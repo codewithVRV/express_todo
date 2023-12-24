@@ -48,6 +48,25 @@ class TodoRepository {
             throw error;
         }
     }
+
+    async updateTodo (todoId, newTodo) {
+        try{
+            const response = await Todo.update(
+                { title: newTodo }, // Fields to be updated and their new values
+                {
+                  where: {
+                    id: todoId, // Conditions for the update
+                  },
+                }
+            )
+            return response;
+
+        }
+        catch (error) {
+            console.log("Error from todoRepository destroyTodo", error)
+            throw error;
+        }
+    }
 }
 
 

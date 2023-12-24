@@ -80,9 +80,29 @@ async function destroyTodo (req, res) {
     }
 }
 
+async function updateTodo (req, res) {
+    try{
+        // db processing
+        const response = await todoService.updateTodo(req.params.id, req.body.title)
+
+        return res.status(StatusCodes.OK).json({
+            success: true,
+            error: {},
+            message: `successfully update  todo by given id : ${req.params.id}`,
+            data : response,
+        })
+    }
+    catch (error) {
+        console.log("update todo controller error:", error)
+        return res.status(error.statusCode).json(errorResponse(error.reason, error))
+
+    }
+}
+
 module.exports = {
     createTodo,
     getTodos,
     getTodo,
     destroyTodo,
+    updateTodo,
 }
