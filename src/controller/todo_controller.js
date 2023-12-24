@@ -10,7 +10,6 @@ async function createTodo (req, res) {
     try{
         // db processing
         const response = await todoService.createTodo(req.body);
-        console.log("response of createTodo", response)
 
         return res.status(StatusCodes.CREATED).json({
             success: true,
@@ -20,7 +19,7 @@ async function createTodo (req, res) {
         })
     }
     catch (error) {
-        console.log("create product controller error:", error)
+        console.log("create Todo controller error:", error)
     }
 }
 
@@ -37,7 +36,7 @@ async function getTodos (req, res) {
         })
     }
     catch (error) {
-        console.log("create product controller error:", error)
+        console.log("getTodos  controller error:", error)
     }
 }
 async function getTodo (req, res) {
@@ -48,12 +47,12 @@ async function getTodo (req, res) {
         return res.status(StatusCodes.OK).json({
             success: true,
             error: {},
-            message: "successfully fetch  todo by given id",
+            message: `successfully fetch  todo by given id : ${req.params.id}`,
             data : response,
         })
     }
     catch (error) {
-        console.log("create product controller error:", error)
+        console.log("getTodo  controller error:", error)
     }
 }
 async function destroyTodo (req, res) {
@@ -64,12 +63,12 @@ async function destroyTodo (req, res) {
         return res.status(StatusCodes.OK).json({
             success: true,
             error: {},
-            message: "successfully fetch  todo by given id",
+            message: `successfully delete  todo by given id : ${req.params.id}`,
             data : response,
         })
     }
     catch (error) {
-        console.log("create product controller error:", error)
+        console.log("delete todo controller error:", error)
     }
 }
 

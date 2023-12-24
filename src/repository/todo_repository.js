@@ -8,6 +8,7 @@ class TodoRepository {
         }
         catch (error) {
             console.log("Error from todoRepository getTodos", error)
+            throw error;
         }
     }
 
@@ -18,6 +19,7 @@ class TodoRepository {
         }
         catch (error) {
             console.log("Error from todoRepository getTodo", error)
+            throw error;
         }
     }
     async createTodo (title) {
@@ -29,6 +31,7 @@ class TodoRepository {
         }
         catch (error) {
             console.log("Error from todoRepository createTodo", error)
+            throw error;
         }
     }
     async destroyTodo (todoId) {
@@ -42,6 +45,7 @@ class TodoRepository {
         }
         catch (error) {
             console.log("Error from todoRepository destroyTodo", error)
+            throw error;
         }
     }
 }
