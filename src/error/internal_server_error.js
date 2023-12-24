@@ -1,4 +1,4 @@
-const { StatusCodes } = require("http-status-codes");
+const { StatusCodes, ReasonPhrases } = require("http-status-codes");
 
 class InternalServerError extends Error{
     constructor() {
@@ -6,6 +6,7 @@ class InternalServerError extends Error{
         super(errorMessage);
         this.statusCode = StatusCodes.INTERNAL_SERVER_ERROR;
         this.errorMessage = errorMessage;
+        this.reason = ReasonPhrases.INTERNAL_SERVER_ERROR;
         this.name = "InternalServerError"
     }
 }

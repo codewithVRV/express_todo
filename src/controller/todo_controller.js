@@ -21,7 +21,7 @@ async function createTodo (req, res) {
     }
     catch (error) {
         console.log("create Todo controller error:", error)
-        return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json(errorResponse(ReasonPhrases.INTERNAL_SERVER_ERROR, error))
+        return res.status(error.statusCode).json(errorResponse(error.reason, error))
     }
 }
 
@@ -39,7 +39,7 @@ async function getTodos (req, res) {
     }
     catch (error) {
         console.log("getTodos  controller error:", error)
-        return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json(errorResponse(ReasonPhrases.INTERNAL_SERVER_ERROR, error))
+        return res.status(error.statusCode).json(errorResponse(error.reason, error))
 
     }
 }
@@ -57,7 +57,7 @@ async function getTodo (req, res) {
     }
     catch (error) {
         console.log("getTodo  controller error:", error)
-        return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json(errorResponse(ReasonPhrases.INTERNAL_SERVER_ERROR, error))
+        return res.status(error.statusCode).json(errorResponse(error.reason, error))
 
     }
 }
@@ -75,7 +75,7 @@ async function destroyTodo (req, res) {
     }
     catch (error) {
         console.log("delete todo controller error:", error)
-        return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json(errorResponse(ReasonPhrases.INTERNAL_SERVER_ERROR, error))
+        return res.status(error.statusCode).json(errorResponse(error.reason, error))
 
     }
 }

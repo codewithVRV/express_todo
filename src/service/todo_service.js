@@ -1,4 +1,5 @@
 const InternalServerError = require("../error/internal_server_error");
+const NotFoundError = require("../error/not_found");
 
 class TodoService {
     constructor(repository){
@@ -32,9 +33,15 @@ class TodoService {
     async getTodo (id) {
         try{
             const response = await this.repository.getTodo(id);
+            if(!response){
+                throw new NotFoundError("Todo", "id", id)
+            }
             return response;
         }
         catch (error) {
+            if(error.name === "NotFoundError"){
+                throw error;
+            }
             console.log("getTodo error from todo service layer", error);
             throw new InternalServerError()
         }
