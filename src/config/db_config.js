@@ -8,3 +8,10 @@ const sequelize = new Sequelize(DB_NAME, DB_USER, DB_PASS, {
   })
 
 module.exports = sequelize;
+
+
+
+// const sequelize = new Sequelize('database', 'username', 'password', {
+//   host: 'localhost',
+//   dialect: /* one of 'mysql' | 'postgres' | 'sqlite' | 'mariadb' | 'mssql' | 'db2' | 'snowflake' | 'oracle' */
+// });

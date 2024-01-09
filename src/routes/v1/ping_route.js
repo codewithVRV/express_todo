@@ -8,11 +8,11 @@ const router = express.Router()
 
 
 router.get("/ping", pingController)
+
 router.get("/todos", getTodos)
 router.get("/todos/:id", getTodo)
 router.delete("/todos/:id", destroyTodo)
 router.patch("/todos/:id", [todoValidator], updateTodo)
-
 router.post("/todos", [todoValidator], createTodo)
 
 module.exports = router;
